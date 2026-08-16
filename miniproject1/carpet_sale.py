@@ -8,9 +8,18 @@ total_sales = 0.0  # running total across all orders
 
 num_orders = 3  # number of orders to process
 
+print(f'Carpet Sale Program — enter {num_orders} orders.')
+print('For each order, type three values separated by spaces: price_per_sqft width length')
+print('Example:  12.50 10 15')
+print()
+
 for order_num in range(1, num_orders + 1):
     # Read carpet price per sq ft, room width, and room length for this order
-    price_per_sqft, width, length = input().split()
+    parts = input(f'Order #{order_num} (price width length): ').split()
+    if len(parts) != 3:
+        print("Please enter exactly three values: price width length")
+        continue
+    price_per_sqft, width, length = parts
     price_per_sqft = float(price_per_sqft)
     width = int(width)
     length = int(length)
